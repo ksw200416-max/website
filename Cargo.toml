@@ -5,7 +5,6 @@ edition = "2021"
 default-run = "myproject"
 
 [dependencies]
-# Rust 1.75.0 환경에서 edition 2024를 절대 요구하지 않는 구버전 고정 양식입니다.
 axum = "=0.6.20"
 tokio = { version = "=1.32.0", features = ["full"] }
 serde = { version = "=1.0.188", features = ["derive"] }
