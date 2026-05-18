@@ -26,6 +26,7 @@ struct AppState {
 #[tokio::main]
 async fn main() {
     // SQLite 데이터베이스 연결 주소 설정
+    // 데이터 저장공간 확보하기
     let db_url = "sqlite:applicants.db";
     let pool = SqlitePool::connect(db_url).await.expect("DB 연결에 실패했습니다.");
 
@@ -51,7 +52,7 @@ async fn main() {
         .allow_methods([Method::POST])
         .allow_origin(Any);
 
-    // 라우터 설정 및 상태(State) 연결
+    // 라우터 설정 및 상태(State) 연결  (외부의 요청 받을 준비)
     let app = Router::new()
         .route("/apply", post(handle_apply))
         .layer(cors)

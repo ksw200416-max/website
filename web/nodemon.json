@@ -1,0 +1,5 @@
+{
+    "watch": ["./src"],
+    "exec": "BUILD_PATH='./test_build' react-scripts build&&babel-node src/test_init.js 4004 test",
+    "ext": "css, js, json, scss"
+}
