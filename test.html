@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head><title>백엔드 연결 테스트</title></head>
+<body>
+    <h2>🚀 동아리 지원서 작성 테스트</h2>
+    <form id="applyForm">
+        이름: <input type="text" id="name" value="웹테스트"><br><br>
+        학번: <input type="text" id="student_id" value="20269999"><br><br>
+        학과: <input type="text" id="major" value="소프트웨어학과"><br><br>
+        전화번호: <input type="text" id="phone" value="010-9999-9999"><br><br>
+        이메일: <input type="text" id="email" value="web@test.com"><br><br>
+        한줄소개: <input type="text" id="message" value="백엔드 통신 성공 기원"><br><br>
+        <button type="button" onclick="sendData()">지원서 제출하기</button>
+    </form>
+
+    <script>
+        async function sendData() {
+            const formData = {
+                name: document.getElementById('name').value,
+                student_id: document.getElementById('student_id').value,
+                major: document.getElementById('major').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+
+            // 파트너님이 만든 백엔드 서버 주소로 데이터를 던집니다!
+            const response = await fetch('http://localhost:3000/apply', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+            alert("서버 응답: " + JSON.stringify(result));
+        }
+    </script>
+</body>
+</html>
